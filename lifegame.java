@@ -49,6 +49,41 @@ public class lifegame {
 
 
 	public static int[][] makeNextStateArr(int[][] stateArr, int rows, int columns) {
+		
+		int[][] nextStateArr = new int[rows][columns];
+
+		int i = 0, j = 0;
+		int temp = 0;
+
+		for (i = 0; i < columns; i++) {
+			switch (i):{
+				case 0:
+					nextStateArr[0][0] = nextStateArr[0][1] + nextStateArr[1][0];
+					break;
+				case columns - 1:
+					nextStateArr[0][columns - 1] = nextStateArr[0][i - 1] + nextStateArr[1][i];
+					break;
+				default:
+					nextStateArr = 
+
+			
+			}
+
+		
+		}
+
+
+
+		for (i = 0; i < rows; i++) {
+			for (j = 0; j < columns; j++) {
+
+			
+			}
+		}
+		
+		
+		
+		
 		return stateArr;
 	}
 
