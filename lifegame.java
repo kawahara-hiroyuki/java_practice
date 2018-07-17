@@ -14,31 +14,42 @@ public class lifegame {
 		// next state
 		int gameTimes = 100;
 		lifeGames(firstStateArr, gameTimes, rows, columns);
-
-		// 表示
-		// showStateArr(array, array.length, array[0].length);
 	}
 
 
-	public static void lifeGames(int[][] firstStateArr, int rows, int columns) {
-		
+	public static void lifeGames(int[][] firstStateArr, int gameTimes, int rows, int columns) {
 
-		int i = 0, j = 0;
-		for (i = 0; i < rows; i++) {
-			for (j = 0; j < columns; j++) {
-				
-				
-				
-			}
-			
+		int[][] stateArr = firstStateArr;
+		int[][] nextStateArr = new int[rows][columns]; 
+
+		int i = 0;
+		for (i = 0; i < gameTimes; i++) {
+			organizeView();
+
+			// math of next stateArr
+			nextStateArr = makeNextStateArr(stateArr, rows, columns);
+
+			showStateArr(nextStateArr, rows, columns);
+
+			stateArr = nextStateArr;
+
 		}
 	}
 
-	public static int[][] makeNextStateArr(int[][] stateArr, int rows, int columns) {
-	
-	
-	
+	public static void organizeView() {
+		System.out.println();
+		System.out.println("-----------------");
+		System.out.println();
 
+		try {
+			Thread.sleep(3000);
+		}catch(InterruptedException e){}
+	}
+
+
+
+	public static int[][] makeNextStateArr(int[][] stateArr, int rows, int columns) {
+		return stateArr;
 	}
 
 
@@ -48,7 +59,7 @@ public class lifegame {
 
 	// 初期状態の配列の作成
 	public static int[][] makeFirstStateArr(int rows, int columns) {
-		double spawnRate = 0.4;
+		double spawnRate = 0.2;
 
 		int[][] result = new int[rows][columns];
 		
@@ -74,7 +85,7 @@ public class lifegame {
 		int i = 0, j = 0;
 		for (i = 0; i < rows; i++) {
 			for ( j = 0; j < columns; j++) {
-				if (stateArr[i][j] == 0 ) {
+				if (stateArr[i][j] == 1 ) {
 					System.out.print("￭");
 				} else {
 					System.out.print(" ");
