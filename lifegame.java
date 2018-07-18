@@ -42,10 +42,9 @@ public class lifegame {
 		System.out.println();
 
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		}catch(InterruptedException e){}
 	}
-
 
 
 	public static int[][] makeNextStateArr(int[][] stateArr, int rows, int columns) {
@@ -58,30 +57,50 @@ public class lifegame {
 		for (i = 0; i < columns; i++) {
 			switch (i):{
 				case 0:
-					nextStateArr[0][0] = nextStateArr[0][1] + nextStateArr[1][0];
+					nextStateArr[0][i] = stateArr[0][1] + stateArr[1][0];
 					break;
 				case columns - 1:
-					nextStateArr[0][columns - 1] = nextStateArr[0][i - 1] + nextStateArr[1][i];
+					nextStateArr[0][i] = stateArr[0][i - 1] + stateArr[1][i];
 					break;
 				default:
-					nextStateArr = 
-
-			
+					nextStateArr[0][i] = stateArr[0][i - 1] + stateArr[1][i] + stateArr[0][i + 1];
 			}
-
-		
 		}
-
-
 
 		for (i = 0; i < rows; i++) {
 			for (j = 0; j < columns; j++) {
+				switch (j):{
+					case 0:
+						nextStateArr[i][j] = stateArr[i - 1][j] + stateArr[i][j + 1] + stateArr[i + 1][j];
+						break;
+					case columns - 1:
+						nextStateArr[i][j] = stateArr[i - 1][j] + stateArr[i][j - 1] +  stateArr[i + 1][j];
+						break;
+					default:
+						nextStateArr[i][j] = stateArr[i - 1][j] + stateArr[i + 1][j] + stateArr[i][j - 1] + stateArr[i][j + 1];
+				}
 
 			
 			}
 		}
 		
-		
+
+		for (i = 0; i < columns; i++) {
+			switch (i):{
+				case 0:
+					nextStateArr[rows - 1][i] = stateArr[rows - 1][1] + stateArr[rows - 2][0];
+					break;
+				case columns - 1:
+					nextStateArr[rows - 1][i] = stateArr[rows - 1][i - 1] + stateArr[rows - 2][i];
+					break;
+				default:
+					nextStateArr[rows - 1][i] = stateArr[rows - 1][i - 1] + stateArr[rows - 1][i] + stateArr[rows - 1][i + 1];
+			}
+		}
+
+
+
+
 		
 		
 		return stateArr;
