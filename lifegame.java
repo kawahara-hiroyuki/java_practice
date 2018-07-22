@@ -10,10 +10,9 @@ public class lifegame {
 		
 		// first state
 		int[][] firstStateArr = makeFirstStateArr(rows, columns, spawnRate);
-		showStateArr(firstStateArr, rows, columns);
 
 		// next state
-		int gameTimes = 100;
+		int gameTimes = 2;
 		lifeGames(firstStateArr, gameTimes, rows, columns);
 	}
 
@@ -26,7 +25,7 @@ public class lifegame {
 
 		int i = 0;
 		for (i = 0; i < gameTimes; i++) {
-			organizeView();
+			// organizeView();
 
 			// math of next stateArr
 			nextStateArr = makeNextStateArr(stateArr, rows, columns);
@@ -147,23 +146,31 @@ public class lifegame {
 				}
 			}
 		}
+
+
+		showStateArr(result, rows, columns);
 		return result;
 	}
 
 	// データの表示 
 	public static void showStateArr(int stateArr[][], int rows, int columns) {
 		int i = 0, j = 0;
+		String showText = "";
 
 		for (i = 0; i < rows; i++) {
+			showText = showText + i + ": ";
 			for ( j = 0; j < columns; j++) {
 					if (stateArr[i][j] == 1 ) {
-					System.out.print("￭");
+					showText = showText + "￭";
 				} else {
-					System.out.print(" ");
+					showText = showText + " ";
 				}
 			}
-			System.out.println();
+			showText = showText + "\n";
 		}
+		showText = showText + "------------------";
+
+		System.out.print(showText);
 	}
 }
 
